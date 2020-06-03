@@ -1,3 +1,22 @@
+galaxy_info:
+  role_name: rrdcached
+  author: Tobias Richter
+  description: Ansible Role for installing rrdcached
+  license: Apache
+  min_ansible_version: 2.7
+
+  platforms:
+    - name: Debian
+      versions:
+        - any
+    - name: Ubuntu
+      versions:
+        - any
+
+  galaxy_tags:
+    - rrd
+    - rrdcached
+
 dependencies:
   - role: tobias_richter.rrdtool
     rrdtool_version: "{{ rrdcached_version }}"
