@@ -1,0 +1,5 @@
+dependencies:
+  - role: tobias_richter.rrdtool
+    rrdtool_version: "{{ rrdcached_version }}"
+    tags:
+      - rrdtool

@@ -1,0 +1,13 @@
+# {{ ansible_managed }} by role tobias_richter.rrdcached
+DAEMON={{ rrdcached_bin_path }}
+WRITE_TIMEOUT=1800
+WRITE_JITTER=1800
+WRITE_THREADS=4
+BASE_PATH=/opt/librenms/rrd/
+JOURNAL_PATH={{ rrdcached_journal_path }}
+PIDFILE=/var/run/rrdcached.pid
+SOCKFILE=/var/run/rrdcached.sock
+SOCKGROUP=librenms
+DAEMON_GROUP={{ rrdcached_user }}
+DAEMON_USER={{ rrdcached_group }}
+BASE_OPTIONS="-B -F -R"

@@ -1,0 +1,17 @@
+# {{ ansible_managed }} by role tobias_richter.rrdcached
+
+[Unit]
+Description=Data caching daemon for rrdtool
+Documentation=man:rrdcached(1)
+
+[Service]
+# If you enable socket-activable rrdcached.socket,
+# command line socket declarations will be ignored
+PIDFile={{ rrdcached_pid_file }}
+ExecStart={{ rrdcached_bin_path }} -w {{ rrdcached_daemon_w_timeout }} -z {{ rrdcached_daemon_z_delay }} -f {{ rrdcached_daemon_f_timeout }} -s {{ rrdcached_group }} -U {{ rrdcached_user }} -G {{ rrdcached_group }} -B -R -j {{ rrdcached_journal_path }} -l {{ rrdcached_socket }} -t {{ rrdcached_daemon_write_threads }} -F -b {{ rrdcached_daemon_base_path }} -p {{ rrdcached_pid_file }}
+#WorkingDirectory=
+#User=
+#Group=
+
+[Install]
+WantedBy=multi-user.target
