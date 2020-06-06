@@ -1,20 +1,3 @@
-#- name: Create group for rrdcached.
-#  group:
-#    name: "{{ rrdcached_group }}"
-#    state: present
-#
-#- name: Create librenms user.
-#  user:
-#    name: "{{ rrdcached_user }}"
-#    shell: /bin/bash
-#    group:
-#    groups: "{{ rrdcached_group }}"
-#    home: /opt/librenms
-#    create_home: no
-#    append: no
-#    system: yes
-#    state: present
-
 - name: Fix permission on journal path.
   file:
     path: "{{ rrdcached_journal_path }}"
@@ -34,24 +17,13 @@
     path: "/etc/init.d/rrdcached"
     state: absent
 
-#- name: Configure rrdcached service (init.d).
-#  template:
-#    src: etc/init.d/rrdcached.j2
-#    dest: "/etc/init.d/rrdcached"
-#  notify: restart rrdcached
-#  register: _rrdcached_service_config
-
 - name: Configure rrdcached service (systemd).
   template:
     src: etc/systemd/system/rrdcached.service.j2
     dest: "/etc/systemd/system/rrdcached.service"
-  notify: restart rrdcached
+  notify:
+    - restart rrdcached
   register: _rrdcached_service_config
-
-- name: Reload daemon on service config change.
-  systemd:
-    daemon_reload: yes
-  when: _rrdcached_service_config.changed
 
 - name: Enable and start rrdcached service.
   systemd:
