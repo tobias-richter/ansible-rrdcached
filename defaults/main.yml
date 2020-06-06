@@ -1,15 +1,36 @@
+# Version of rrdcached/rrdtool
 rrdcached_version: 1.7.2
+
+# Basedir of rrdcached
 rrdcached_basedir: "/opt/rrdtool/{{ rrdcached_version }}"
+
+# Path to the rrdcached binary
 rrdcached_bin_path: "{{ rrdcached_basedir }}/bin/rrdcached"
+
+# rrdcached user
 rrdcached_user: librenms
+
+# rrdcached group
 rrdcached_group: "{{ rrdcached_user }}"#
+
+# Path to journal dir
 rrdcached_journal_path: "/var/lib/rrdcached/journal/"
+
+# Path fo config file
 rrdcached_config_file: /etc/default/rrdcached
+
+# Path to pid file
 rrdcached_pid_file: /var/run/rrdcached.pid
+
+# Path to the socket
 rrdcached_socket: unix:/var/run/rrdcached.sock
+
+# rrdcached configuration
 # see https://linux.die.net/man/1/rrdcached
 rrdcached_daemon_w_timeout: 1800 # Data is written to disk every timeout seconds
 rrdcached_daemon_z_delay: 1800 # If specified, rrdcached will delay writing of each RRD for a random number of seconds in the range
 rrdcached_daemon_f_timeout: 3600 # Every timeout seconds the entire cache is searched for old values which are written to disk
 rrdcached_daemon_write_threads: 4 # Every timeout seconds the entire cache is searched for old values which are written to disk
+
+# Basepath for the daemon
 rrdcached_daemon_base_path: /opt/librenms/rrd/
