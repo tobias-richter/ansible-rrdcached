@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/tobias-richter/ansible-rrdcached.svg?branch=master)](https://travis-ci.org/tobias-richter/ansible-rrdcached)
 
-This roles compiles/setups rrdtool and rrdcached on Debian/Ubuntu systems for the usage with librenms.
+This role compiles/setups rrdtool and rrdcached on Debian/Ubuntu systems
+for the usage with librenms.
 
 ## Requirements
 
