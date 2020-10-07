@@ -5,11 +5,13 @@
     owner: "{{ rrdcached_user }}"
     group: "{{ rrdcached_group }}"
     recurse: true
+    mode: 0755
 
 - name: Configure rrdcached defaults.
   template:
     src: etc/default/rrdcached.j2
     dest: "{{ rrdcached_config_file }}"
+    mode: 0644
   notify: restart rrdcached
 
 - name: remove rrdcached init.d
@@ -21,6 +23,7 @@
   template:
     src: etc/systemd/system/rrdcached.service.j2
     dest: "/etc/systemd/system/rrdcached.service"
+    mode: 0644
   notify:
     - restart rrdcached
   register: _rrdcached_service_config
