@@ -30,7 +30,14 @@
 
 - name: Enable and start rrdcached service.
   systemd:
-    name: rrdcached
+    name: rrdcached.service
     state: started
     enabled: yes
+    daemon_reload: yes
+
+- name: Disable rrdcached.socket
+  systemd:
+    name: rrdcached.socket
+    state: stopped
+    enabled: no
     daemon_reload: yes

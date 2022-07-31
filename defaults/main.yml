@@ -20,10 +20,10 @@ rrdcached_journal_path: "/var/lib/rrdcached/journal/"
 rrdcached_config_file: /etc/default/rrdcached
 
 # Path to pid file
-rrdcached_pid_file: /var/run/rrdcached.pid
+rrdcached_pid_file: /run/rrdcached.pid
 
 # Path to the socket
-rrdcached_socket: unix:/var/run/rrdcached.sock
+rrdcached_socket: unix:/run/rrdcached.sock
 
 # rrdcached configuration
 # see https://linux.die.net/man/1/rrdcached
